@@ -4,18 +4,22 @@ import s from './ContactList.module.css';
 import {
   selectContacts,
   deleteContact,
+  selectFilter,
   
 } from 'redux/ContactSlice';
 import { useSelector, useDispatch } from 'react-redux/es/exports';
 
 function ContactList() {
   const contacts = useSelector(selectContacts);
+  const filter = useSelector(selectFilter);
   const dispatch = useDispatch();
-
-
+  
+  const visibleContacts = contacts.filter(contact =>
+    contact.name.toLowerCase().includes(filter.toLowerCase()));
+    
   return (
     <ul className={s.contactList}>
-      {contacts.map(({ name, number, id }) => (
+      {visibleContacts.map(({ name, number, id }) => (
             <ContactListItem
               name={name}
               number={number}
