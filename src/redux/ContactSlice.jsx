@@ -13,7 +13,9 @@ const contactSlice = createSlice({
   initialState,
   reducers: {
     addContact(state, action) {
-      state.items.push(action.payload);
+     return state.items.map(state.items => state.items.name).includes(action.payload.name) 
+     ? alert(`${action.payload.name} is already in contacts`)
+     : state.items.push(action.payload);
     },
     deleteContact(state, action) {
       state.items = state.items.filter(item => item.id !== action.payload);
@@ -21,8 +23,11 @@ const contactSlice = createSlice({
     setFilter(state, action) {
       state.filter = action.payload;
     },
+    
   },
+  
 });
+
 
 const persistConfig = {
   key: 'contacts',
@@ -39,3 +44,5 @@ export const selectContacts = state => state.contacts.items;
 export const selectFilter = state => state.contacts.filter;
 
 export const { addContact, deleteContact, setFilter } = contactSlice.actions;
+
+console.log();
