@@ -25,7 +25,7 @@ function ContactForm() {
 
   const handleSubmit = event => {
     event.preventDefault();
-
+    console.log(name)
     dispatch(
       addContact({
         id: nanoid(),
