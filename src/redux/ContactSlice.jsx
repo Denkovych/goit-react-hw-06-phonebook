@@ -13,15 +13,15 @@ const contactSlice = createSlice({
   initialState,
   reducers: {
     addContact(state, action) {
-     return state.items.map(state.items => state.items.name).includes(action.payload.name) 
-     ? alert(`${action.payload.name} is already in contacts`)
-     : state.items.push(action.payload);
+          state.items.map(item => item.name).includes(action.payload.name) 
+        ? alert(`${action.payload.name} is already in contacts`)
+        : state.items.push(action.payload);
     },
     deleteContact(state, action) {
-      state.items = state.items.filter(item => item.id !== action.payload);
+        state.items = state.items.filter(item => item.id !== action.payload);
     },
     setFilter(state, action) {
-      state.filter = action.payload;
+        state.filter = action.payload;
     },
     
   },
@@ -45,4 +45,4 @@ export const selectFilter = state => state.contacts.filter;
 
 export const { addContact, deleteContact, setFilter } = contactSlice.actions;
 
-console.log();
+console.log(contactsPersistedReducer)
