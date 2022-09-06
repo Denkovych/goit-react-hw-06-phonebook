@@ -5,7 +5,7 @@ import {
   selectContacts,
   deleteContact,
   selectFilter,
-  
+
 } from 'redux/ContactSlice';
 import { useSelector, useDispatch } from 'react-redux/es/exports';
 
@@ -16,7 +16,7 @@ function ContactList() {
   
   const visibleContacts = contacts.filter(contact =>
     contact.name.toLowerCase().includes(filter.toLowerCase()));
-    
+    console.log(contacts)
   return (
     <ul className={s.contactList}>
       {visibleContacts.map(({ name, number, id }) => (
