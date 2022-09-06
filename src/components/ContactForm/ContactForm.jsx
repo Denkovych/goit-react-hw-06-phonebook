@@ -10,7 +10,7 @@ function ContactForm() {
 
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
-
+ 
   const handleChange = event => {
     const { name } = event.currentTarget;
     switch (name) {
@@ -22,10 +22,10 @@ function ContactForm() {
         return;
     }
   };
-
+console.log(handleChange)
   const handleSubmit = event => {
     event.preventDefault();
-    console.log(name)
+    
     dispatch(
       addContact({
         id: nanoid(),
